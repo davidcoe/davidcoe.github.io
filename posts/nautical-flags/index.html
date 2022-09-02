@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <title>David M. Coe · Bio</title>
+  <meta name="description" content="Landing Page">
+  <meta name="author" content="David M. Coe">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/fonts.css" type="text/css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/normalize.css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/all.min.css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/vncnt.css">
+  
+  
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-4234114-2', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+ 
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+</head>
+<body><div id="content">
+<main>
+	<article class="grid-container full autocenter">
+		<div class="title">
+			<h1 class="title">Nautical Flags</h1>
+			<div class="meta">Posted on 2022.09.02</div>
+		</div>
+		
+		<div class="tldr">
+			<strong>tl;dr:</strong>
+			Decode and encode maritime signal flags using this website
+		</div>
+
+		<section class="body">
+			<h1 id="maritime-signal-flags">Maritime Signal Flags</h1>
+<h2 id="encode-maritime-signal-flags">Encode Maritime Signal Flags</h2>
+<style>
+   
+    .message-flag {
+        height: 100px;
+        width: 100px;
+        margin: 5px;
+        border: 1px solid;
+    }
+    
+</style>
+<script>
+    const natoPhoneticAlphabet = {
+        "A": "Alpha",
+        "B": "Bravo",
+        "C": "Charlie",
+        "D": "Delta",
+        "E": "Echo",
+        "F": "Foxtrot",
+        "G": "Golf",
+        "H": "Hotel",
+        "I": "India",
+        "J": "Juliet",
+        "K": "Kilo",
+        "L": "Lima",
+        "M": "Mike",
+        "N": "November",
+        "O": "Oscar",
+        "P": "Papa",
+        "Q": "Quebec",
+        "R": "Romeo",
+        "S": "Sierra",
+        "T": "Tango",
+        "U": "Uniform",
+        "V": "Victor",
+        "W": "Whiskey",
+        "X": "X-ray",
+        "Y": "Yankee",
+        "Z": "Zulu"
+    }
+
+    const debounce = (func, wait_ms=50) => { 
+        let timeoutID = undefined;
+        console.log("Creating wrapper function");
+        return (...args) => {
+            window.clearTimeout(timeoutID);
+            console.log(`Executing wrapper function ${args}`);
+            timeoutID = window.setTimeout(() => func(...args), wait_ms);
+        };
+    }
+
+    const updateFlags = (event) => {
+        const resultFlags = document.getElementById('input-result');
+        resultFlags.innerHTML = '';
+
+        const inputText = event.target.value.toUpperCase().replace(/[^A-Z]/g, '');
+
+        if(inputText) {
+            inputText.split('').forEach((letter) => {
+                const nato = natoPhoneticAlphabet[letter];
+                if (!nato) {
+                    console.log(`Unable to find a nato value for ${letter}!`);
+                }
+                const img = document.createElement('img');
+                img.setAttribute('class', 'message-flag');
+                img.setAttribute('src', `/img/maritime-signal-flags/ICS_${nato}.svg`);
+                img.setAttribute('alt', nato);
+                
+                resultFlags.appendChild(img);
+            });
+        }
+    }
+    document.addEventListener("DOMContentLoaded", () => document.getElementById('input-message').addEventListener('input', debounce(updateFlags, 500)));
+</script>
+<div class="grid-container full autocenter" style="text-align: center">
+    <label for="input-message">Message</label>
+    <textarea class="u-full-width" placeholder="Your message …" id="input-message" pattern="[A-Za-z]"></textarea>
+    <div class="row" id="input-result"></div>
+</div>
+<h2 id="encode-maritime-signal-flags-1">Encode Maritime Signal Flags</h2>
+<script>
+    const decodeFlags = (event) => {
+        if (event.target.className === "message-flag") {
+            document.getElementById('decode-message').innerHTML += event.target.alt[0]
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => document.getElementById('decode-flag').addEventListener('click', decodeFlags));    
+</script>
+<div class="grid-container full autocenter">
+    <div class="row" id="decode-flag">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Alpha.svg" alt="Alpha">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Bravo.svg" alt="Bravo">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Charlie.svg" alt="Charlie">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Delta.svg" alt="Delta">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Echo.svg" alt="Echo">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Foxtrot.svg" alt="Foxtrot">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Golf.svg" alt="Golf">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Hotel.svg" alt="Hotel">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_India.svg" alt="India">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Juliet.svg" alt="Juliet">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Kilo.svg" alt="Kilo">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Lima.svg" alt="Lima">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Mike.svg" alt="Mike">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_November.svg" alt="November">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Oscar.svg" alt="Oscar">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Papa.svg" alt="Papa">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Quebec.svg" alt="Quebec">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Romeo.svg" alt="Romeo">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Sierra.svg" alt="Sierra">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Tango.svg" alt="Tango">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Uniform.svg" alt="Uniform">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Victor.svg" alt="Victor">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Whiskey.svg" alt="Whiskey">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_X-ray.svg" alt="X-ray">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Yankee.svg" alt="Yankee">
+        <img class="message-flag" src="../../img/maritime-signal-flags/ICS_Zulu.svg" alt="Zulu">
+    </div>
+    <textarea class="u-full-width" placeholder="" id="decode-message"></textarea>
+</div>
+<h2 id="background">Background</h2>
+<p>I keep finding these nautical flags (I supposed they&rsquo;re really called maritime signal flags) all over, including in kids books. It feels like a hidden code
+that&rsquo;s a little bit inaccessible. I wanted to create a simple app that would let me decode them.</p>
+<h2 id="future-areas">Future Areas</h2>
+<p>I&rsquo;d love to investigate how best to sort the flags together to make it easier to decode. My guess is that finding all the possible colors and then arranging the flags
+in those groupings could be pretty interesting. Should be pretty easy to build a histogram of the colors, smooth or select a peak, and then resample the colors to see
+if they contain those peeks.</p>
+<p>&ldquo;python - Plot image color histogram using matplotlib - Stack Overflow&rdquo;. <a href="https://stackoverflow.com/questions/12182891/plot-image-color-histogram-using-matplotlib">https://stackoverflow.com/questions/12182891/plot-image-color-histogram-using-matplotlib</a>. Accessed 02 Sep. 2022</p>
+<h2 id="resources">Resources</h2>
+<p>&ldquo;International maritime signal flags - Wikipedia&rdquo;. <a href="https://en.wikipedia.org/wiki/International_maritime_signal_flags">https://en.wikipedia.org/wiki/International_maritime_signal_flags</a>. Accessed 02 Sep. 2022</p>
+<p>&ldquo;NATO phonetic alphabet - Wikipedia&rdquo;. <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet">https://en.wikipedia.org/wiki/NATO_phonetic_alphabet</a>. Accessed 02 Sep. 2022</p>
+
+		</section>
+	</article>
+</main>
+
+        </div></body>
+</html>

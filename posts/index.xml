@@ -6,7 +6,17 @@
     <description>Recent content in Posts on David M. Coe · Bio</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Aug 2022 22:28:38 +0000</lastBuildDate><atom:link href="https://davidmcoe.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 02 Sep 2022 15:54:14 +0000</lastBuildDate><atom:link href="https://davidmcoe.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nautical Flags</title>
+      <link>https://davidmcoe.com/posts/nautical-flags/</link>
+      <pubDate>Fri, 02 Sep 2022 15:54:14 +0000</pubDate>
+      
+      <guid>https://davidmcoe.com/posts/nautical-flags/</guid>
+      <description>Maritime Signal Flags Encode Maritime Signal Flags MessageEncode Maritime Signal Flags Background I keep finding these nautical flags (I supposed they&amp;rsquo;re really called maritime signal flags) all over, including in kids books. It feels like a hidden code that&amp;rsquo;s a little bit inaccessible. I wanted to create a simple app that would let me decode them.
+Future Areas I&amp;rsquo;d love to investigate how best to sort the flags together to make it easier to decode.</description>
+    </item>
+    
     <item>
       <title>Username Generator</title>
       <link>https://davidmcoe.com/posts/username-generator/</link>
