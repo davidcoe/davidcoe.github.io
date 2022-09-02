@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <title>David M. Coe · Bio</title>
+  <meta name="description" content="Landing Page">
+  <meta name="author" content="David M. Coe">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/fonts.css" type="text/css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/normalize.css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/all.min.css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/vncnt.css">
+  
+  
+<script type="application/javascript">
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-4234114-2', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+ 
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+</head>
+<body><div id="content">
+<main>
+	<article class="grid-container full autocenter">
+		<div class="title">
+			<h1 class="title">Username Generator</h1>
+			<div class="meta">Posted on 2022.08.25</div>
+		</div>
+		
+		<div class="tldr">
+			<strong>tl;dr:</strong>
+			Create usernames based on random word combinations like Heroku used to do
+		</div>
+
+		<section class="body">
+			<style>
+    @media (min-width: 600px) {
+        .value-header {
+            grid-column: 1 / span 2;
+        }
+    }
+</style>
+<script>
+    var adjs = [
+        "autumn", "hidden", "bitter", "misty", "silent", "empty", "dry", "dark",
+        "summer", "icy", "delicate", "quiet", "white", "cool", "spring", "winter",
+        "patient", "twilight", "dawn", "crimson", "wispy", "weathered", "blue",
+        "billowing", "broken", "cold", "damp", "falling", "frosty", "green",
+        "long", "late", "lingering", "bold", "little", "morning", "muddy", "old",
+        "red", "rough", "still", "small", "sparkling", "throbbing", "shy",
+        "wandering", "withered", "wild", "black", "young", "holy", "solitary",
+        "fragrant", "aged", "snowy", "proud", "floral", "restless", "divine",
+        "polished", "ancient", "purple", "lively", "nameless"
+    ];
+
+    var nouns = [
+        "waterfall", "river", "breeze", "moon", "rain", "wind", "sea", "morning",
+        "snow", "lake", "sunset", "pine", "shadow", "leaf", "dawn", "glitter",
+        "forest", "hill", "cloud", "meadow", "sun", "glade", "bird", "brook",
+        "butterfly", "bush", "dew", "dust", "field", "fire", "flower", "firefly",
+        "feather", "grass", "haze", "mountain", "night", "pond", "darkness",
+        "snowflake", "silence", "sound", "sky", "shape", "surf", "thunder",
+        "violet", "water", "wildflower", "wave", "water", "resonance", "sun",
+        "wood", "dream", "cherry", "tree", "fog", "frost", "voice", "paper",
+        "frog", "smoke", "star"
+    ];
+
+    const things = [
+        "angle", "ant", "apple", "arch", "arm", "army", "baby", "bag", "ball", "band", "basin", "basket", "bath", "bed",
+        "bee", "bell", "berry", "bird", "blade", "board", "boat", "bone", "book", "boot", "bottle", "box", "boy", "brain",
+        "brake", "branch", "brick", "bridge", "brush", "bucket", "bulb", "button", "cake", "camera", "card", "cart",
+        "carriage", "cat", "chain", "cheese", "chest", "chin", "church", "circle", "clock", "cloud", "coat", "collar",
+        "comb", "cord", "cow", "cup", "curtain", "cushion", "dog", "door", "drain", "drawer", "dress", "drop", "ear", "egg",
+        "engine", "eye", "face", "farm", "feather", "finger", "fish", "flag", "floor", "fly", "foot", "fork", "fowl",
+        "frame", "garden", "girl", "glove", "goat", "gun", "hair", "hammer", "hand", "hat", "head", "heart", "hook", "horn",
+        "horse", "hospital", "house", "island", "jewel", "kettle", "key", "knee", "knife", "knot", "leaf", "leg", "library",
+        "line", "lip", "lock", "map", "match", "monkey", "moon", "mouth", "muscle", "nail", "neck", "needle", "nerve",
+        "net", "nose", "nut", "office", "orange", "oven", "parcel", "pen", "pencil", "picture", "pig", "pin", "pipe",
+        "plane", "plate", "plough", "pocket", "pot", "potato", "prison", "pump", "rail", "rat", "receipt", "ring", "rod",
+        "roof", "root", "sail", "school", "scissors", "screw", "seed", "sheep", "shelf", "ship", "shirt", "shoe", "skin",
+        "skirt", "snake", "sock", "spade", "sponge", "spoon", "spring", "square", "stamp", "star", "station", "stem",
+        "stick", "stocking", "stomach", "store", "street", "sun", "table", "tail", "thread", "throat", "thumb", "ticket",
+        "toe", "tongue", "tooth", "town", "train", "tray", "tree", "trousers", "umbrella", "wall", "watch", "wheel", "whip",
+        "whistle", "window", "wing", "wire", "worm"
+    ];
+
+    const qualities_descriptive = [
+        "able", "acid", "angry", "automatic", "beautiful", "black", "boiling", "bright", "broken", "brown", "cheap",
+        "chemical", "chief", "clean", "clear", "common", "complex", "conscious", "cut", "deep", "dependent", "early",
+        "elastic", "electric", "equal", "fat", "fertile", "first", "fixed", "flat", "free", "frequent", "full", "general",
+        "good", "great", "grey", "hanging", "happy", "hard", "healthy", "high", "hollow", "important", "kind", "like",
+        "living", "long", "male", "married", "material", "medical", "military", "natural", "necessary", "new", "normal",
+        "open", "parallel", "past", "physical", "political", "poor", "possible", "present", "private", "probable", "quick",
+        "quiet", "ready", "red", "regular", "responsible", "right", "round", "same", "second", "separate", "serious",
+        "sharp", "smooth", "sticky", "stiff", "straight", "strong", "sudden", "sweet", "tall", "thick", "tight", "tired",
+        "true", "violent", "waiting", "warm", "wet", "wide", "wise", "yellow", "young"
+    ];
+
+    const qualities_opposites = [
+        "awake", "bad", "bent", "bitter", "blue", "certain", "cold", "complete", "cruel", "dark", "dead", "dear",
+        "delicate", "different", "dirty", "dry", "false", "feeble", "female", "foolish", "future", "green", "ill",
+        "last", "late", "left", "loose", "loud", "low", "mixed", "narrow", "old", "opposite", "public", "rough", "sad",
+        "safe", "secret", "short", "shut", "simple", "slow", "small", "soft", "solid", "special", "strange", "thin",
+        "white", "wrong"
+    ];
+
+    const qualities = qualities_descriptive + qualities_opposites;
+
+    const sample = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+    const generate = () => {
+        document.getElementById("generated-value").textContent = sample(qualities_opposites) + '-' + sample(things);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => generate());
+
+    const copied = () => {
+        const copyIcon = document.querySelector("#copy-button > i");
+        const oldClassName = copyIcon.className;
+        copyIcon.className = "fas fa-check fa-fw"
+        setTimeout(() => {copyIcon.className = oldClassName}, 400);
+    }
+</script>
+<div class="grid-container full autocenter" style="text-align: center">
+    <div class="grid-container third">
+        <strong class="h3-like value-header" id="generated-value">spring-sound-8516</strong>
+        <button id="copy-button" type="button" onclick="navigator.clipboard.writeText(document.getElementById('generated-value').textContent); copied();" aria-label="Copy Generated Name">
+            <i id="copy-button" class="far fa-copy fa-fw"></i>
+        </button>
+    </div>
+    <input class="button button-primary" type="button" id="generate-button" value="Try Again" onclick="generate();" >
+</div>
+<h2 id="resources">Resources</h2>
+<p>&ldquo;Heroku Name Generator – Kevin M Lawson&rdquo;. <a href="https://kevinmlawson.com/herokuname/">https://kevinmlawson.com/herokuname/</a>. Accessed 02 Sep. 2022</p>
+<p>&ldquo;random heroku-like name generator · GitHub&rdquo;. <a href="https://web.archive.org/web/20180103114041/https://gist.github.com/afriggeri/1266756">https://web.archive.org/web/20180103114041/https://gist.github.com/afriggeri/1266756</a>. Accessed 03 Jan. 2018</p>
+<p>&ldquo;polleverywhere/random_username: Generate random Heroku-style names&rdquo;. <a href="https://github.com/polleverywhere/random_username">https://github.com/polleverywhere/random_username</a>. Accessed 02 Sep. 2022</p>
+<p>&ldquo;ruby - How can I programmatically generate Heroku-like subdomain names? - Stack Overflow&rdquo;. <a href="https://stackoverflow.com/questions/7621341/how-can-i-programmatically-generate-heroku-like-subdomain-names/20059752#20059752">https://stackoverflow.com/questions/7621341/how-can-i-programmatically-generate-heroku-like-subdomain-names/20059752#20059752</a>. Accessed 02 Sep. 2022</p>
+<p>&ldquo;The Great Noun List - desiquintans.com&rdquo;. <a href="http://www.desiquintans.com/nounlist">http://www.desiquintans.com/nounlist</a>. Accessed 02 Sep. 2022</p>
+<p>&ldquo;Appendix:Basic English word list - Wiktionary&rdquo;. <a href="https://en.wiktionary.org/wiki/Appendix:Basic_English_word_list">https://en.wiktionary.org/wiki/Appendix:Basic_English_word_list</a>. Accessed 02 Sep. 2022</p>
+
+		</section>
+	</article>
+</main>
+
+        </div></body>
+</html>

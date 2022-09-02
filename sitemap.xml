@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://davidmcoe.com/categories/</loc>
-  </url><url>
     <loc>https://davidmcoe.com/</loc>
+    <lastmod>2022-08-25T22:28:38+00:00</lastmod>
+  </url><url>
+    <loc>https://davidmcoe.com/posts/</loc>
+    <lastmod>2022-08-25T22:28:38+00:00</lastmod>
+  </url><url>
+    <loc>https://davidmcoe.com/posts/username-generator/</loc>
+    <lastmod>2022-08-25T22:28:38+00:00</lastmod>
+  </url><url>
+    <loc>https://davidmcoe.com/categories/</loc>
   </url><url>
     <loc>https://davidmcoe.com/tags/</loc>
   </url>
