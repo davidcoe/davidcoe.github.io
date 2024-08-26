@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <title>David M. Coe · Bio</title>
+  <meta name="description" content="Landing Page">
+  <meta name="author" content="David M. Coe">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/fonts.css" type="text/css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/normalize.css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/all.min.css">
+  <link rel="stylesheet" href="https://davidmcoe.com/css/vncnt.css">
+  
+  
+<script>
+var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+var doNotTrack = (dnt == "1" || dnt == "yes");
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	if (window.sessionStorage) {
+		var GA_SESSION_STORAGE_KEY = 'ga:clientId';
+		ga('create', 'UA-4234114-2', {
+	    'storage': 'none',
+	    'clientId': sessionStorage.getItem(GA_SESSION_STORAGE_KEY)
+	   });
+	   ga(function(tracker) {
+	    sessionStorage.setItem(GA_SESSION_STORAGE_KEY, tracker.get('clientId'));
+	   });
+   }
+	
+	ga('send', 'pageview');
+}
+</script> 
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+</head>
+<body><div id="content">
+<main>
+	<article class="grid-container full autocenter">
+		<div class="title">
+			<h1 class="title">Phonetic Alphabet</h1>
+			<div class="meta">Posted on 2024.08.22</div>
+		</div>
+		
+		<div class="tldr">
+			<strong>tl;dr:</strong>
+			Generate a sentence to phonetically describe the spelling of a word
+		</div>
+
+		<section class="body">
+			<h1 id="phonetic-alphabet">Phonetic Alphabet</h1>
+<script>
+    // TODO is there a better way to load this from json?
+    // TODO is this structure best or should this be a map?
+    // TODO Could I offer other alphabets or allow customization?
+    const phoneticAlphabet = [
+        {
+            "symbol": "A",
+            "code": "Alfa"
+        },
+        {
+            "symbol": "B",
+            "code": "Bravo"
+        },
+        {
+            "symbol": "C",
+            "code": "Charlie"
+        },
+        {
+            "symbol": "D",
+            "code": "Delta"
+        },
+        {
+            "symbol": "E",
+            "code": "Echo"
+        },
+        {
+            "symbol": "F",
+            "code": "Foxtrot"
+        },
+        {
+            "symbol": "G",
+            "code": "Golf"
+        },
+        {
+            "symbol": "H",
+            "code": "Hotel"
+        },
+        {
+            "symbol": "I",
+            "code": "India"
+        },
+        {
+            "symbol": "J",
+            "code": "Juliett"
+        },
+        {
+            "symbol": "K",
+            "code": "Kilo"
+        },
+        {
+            "symbol": "L",
+            "code": "Lima"
+        },
+        {
+            "symbol": "M",
+            "code": "Mike"
+        },
+        {
+            "symbol": "N",
+            "code": "November"
+        },
+        {
+            "symbol": "O",
+            "code": "Oscar"
+        },
+        {
+            "symbol": "P",
+            "code": "Papa"
+        },
+        {
+            "symbol": "Q",
+            "code": "Quebec"
+        },
+        {
+            "symbol": "R",
+            "code": "Romeo"
+        },
+        {
+            "symbol": "S",
+            "code": "Sierra"
+        },
+        {
+            "symbol": "T",
+            "code": "Tango"
+        },
+        {
+            "symbol": "U",
+            "code": "Uniform"
+        },
+        {
+            "symbol": "V",
+            "code": "Victor"
+        },
+        {
+            "symbol": "W",
+            "code": "Whiskey"
+        },
+        {
+            "symbol": "X",
+            "code": "Xray"
+        },
+        {
+            "symbol": "Y",
+            "code": "Yankee"
+        },
+        {
+            "symbol": "Z",
+            "code": "Zulu"
+        }
+    ]
+</script>
+<script>
+    const debounce = (func, wait_ms = 50) => {
+        let timeoutID = undefined;
+        return (...args) => {
+            window.clearTimeout(timeoutID);
+            timeoutID = window.setTimeout(() => func(...args), wait_ms);
+        };
+    }
+
+    const updatePhoneticMessage = (event) => {
+        const inputText = event.target.value;
+
+        const codes = inputText.toUpperCase().replace(/[^A-Z]/g, '').split('').map((letter) => {
+            // TODO I could have an alphabet with multiples and then randomly pick one
+            const code = phoneticAlphabet.find((code) => code.symbol == letter);
+            // TODO I could try to look up words for non matches
+            // TODO This doesn't do much because I strip non-alpha and have them all mapped, but I could get more fancy in the future
+            return code ? code : { "symbol": letter, "code": "?" };
+        });
+
+        const outputElement = document.getElementById('output-message');
+        // TODO Phonetic messages are going to be short, but if that's wrong this isn't going to go well... I could try to be smart and only remove what's changed, but let's see if the naive approach works.
+        while (outputElement.hasChildNodes()) {
+            outputElement.removeChild(outputElement.lastChild);
+        }
+
+        codes.forEach((code) => {
+            const codeSpan = document.createElement('span');
+            codeSpan.innerHTML = `<b>${code.code}</b>`;
+
+            const symbolSpan = document.createElement('span');
+            symbolSpan.innerHTML = code.symbol;
+
+            const d = document.createElement('span');
+            d.setAttribute("class", "codeContainer");
+            d.append(codeSpan);
+            d.append(symbolSpan);
+
+            outputElement.append(d);
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const element = document.getElementById('input-message');
+        element.addEventListener('input', debounce(updatePhoneticMessage, 500));
+        // Autocomplete is enabled so the browser might autofill the input
+        // of the text area. Let's fire an event to make sure that is handled.
+        element.dispatchEvent(new Event('input'));
+    });
+</script>
+<style>
+        .container {
+            display: flex;
+            gap: 1em;
+            flex-wrap: wrap;
+        }
+        .codeContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+</style>
+<textarea id="input-message"></textarea>
+<div id="output-message" class="container"></div>
+<h2 id="resources">Resources</h2>
+<p>&ldquo;NATO phonetic alphabet - Wikipedia&rdquo;. <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet">https://en.wikipedia.org/wiki/NATO_phonetic_alphabet</a>. Accessed 02 Sep. 2022</p>
+
+		</section>
+	</article>
+</main>
+
+        </div></body>
+</html>
