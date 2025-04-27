@@ -66,6 +66,8 @@ h1.h3-like, h2.h3-like {
   margin-right: -50%;
   transform: translate(-50%, -50%);
   max-width: 90%;
+  overflow-y: auto;
+  max-height: 90vh;
 }
 
 .error404 {
@@ -106,6 +108,60 @@ p.reset-margin {
   border-bottom: none;
   position: relative;
   color: #555555;
+}
+
+/* Blog Post Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.post-list {
+  padding: 0;
+  margin: 0;
+}
+
+.post-item {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+  text-align: left;
+}
+
+.post-item:last-child {
+  border-bottom: none;
+}
+
+.post-item h2 {
+  margin-bottom: 1rem;
+}
+
+.post-date {
+  color: var(--text-color-softer);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.post-description {
+  margin-top: 1rem;
+}
+
+.post-tldr {
+  margin-top: 1rem;
+  background-color: var(--background-color-softer);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-wrap: break-word; /* Ensure long words wrap */
+  word-break: break-word;
+}
+
+/* Special handling for post lists to prevent content cutoff */
+#posts-list .landingpage,
+body:has(.post-list) .landingpage {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  margin: 2rem auto;
+  max-height: none;
+  overflow-y: visible;
+  padding: 2rem 0;
 }
 
 /* Larger than mobile (default point when grid becomes active) */
